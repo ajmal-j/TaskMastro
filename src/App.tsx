@@ -23,7 +23,7 @@ function App() {
     }
     setItems((prev) => [
       ...prev,
-      { data: inputValue, id: Date.now().toString() },
+      { data: inputValue, id: Date.now().toString() ,completed:false},
     ]);
     toast.success("Todo added.");
     setInputValue("");
@@ -49,6 +49,7 @@ function App() {
             </Button>
           </form>
           <div className='h-[70vh] overflow-y-auto  w-full mt-5'>
+            {!items.length && 'No Todo\'s.'}
             <List items={items} setItems={setItems} />
           </div>
         </div>
