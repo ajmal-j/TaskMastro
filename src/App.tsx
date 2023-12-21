@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Header } from "./components/header/header";
+import { Input } from "./components/form/input";
+import { Items } from "./types/utils";
+import List from "./components/itemList";
+import Button from "./components/button";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [items, setItems] = useState<Items[]>([]);
+  
+  const [inputValue, setInputValue] = useState<string>("");
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!inputValue) {
+      toast.error("Enter Something",{duration:700});
+      return;
+    }
+    setItems((prev) => [
+      ...prev,
+      { data: inputValue, id: Date.now().toString() },
+    ]);
+    toast.success("Todo added.");
+    setInputValue("");
+  };
+
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Header />
+      <div className='flex justify-center items-center'>
+        <div className='flex w-[50vw] flex-col justify-center items-center'>
+          <form onSubmit={handleSubmit}>
+            <Input
+              type='text'
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+            />
+            <Button className='bg-black w-full p-2 text-white rounded-lg'>
+              Add
+            </Button>
+          </form>
+          <div className='h-[70vh] overflow-y-auto  w-full mt-5'>
+            <List items={items} setItems={setItems} />
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Toaster position='top-right' reverseOrder={true}/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
