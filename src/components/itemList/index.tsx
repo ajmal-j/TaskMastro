@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { type Items, type reactSetState } from "../../types/utils";
 import Button from "../button";
+import "./index.css"
 
 type List = {
   items: Items[];
@@ -18,7 +19,7 @@ const List = ({ items, setItems }: List) => {
   return items.map(({ id, data }) => (
     <div
       key={id}
-      className='mb-2 rounded-lg flex p-3 justify-between items-center bg-black border border-gray-400 me-1'
+      className='mb-2 rounded-lg flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in'
     >
       <p className='text-gray-200'>{data}</p>
       <Button onClick={() => handleDelete(id)}>

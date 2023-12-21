@@ -13,12 +13,12 @@ function App() {
     if (!prev) return [];
     return JSON.parse(prev);
   });
-  
+
   const [inputValue, setInputValue] = useState<string>("");
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputValue) {
-      toast.error("Enter Something",{duration:700});
+      toast.error("Enter Something", { duration: 700 });
       return;
     }
     setItems((prev) => [
@@ -53,7 +53,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Toaster position='top-right' reverseOrder={true}/>
+      <Toaster position='top-right' reverseOrder={true} />
     </>
   );
 }
