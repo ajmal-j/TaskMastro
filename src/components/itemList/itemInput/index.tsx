@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Items, reactSetState } from "../../../types/utils";
 import toast from "react-hot-toast";
+import "./index.css";
 
 type ListInput = {
   id: string;
@@ -8,8 +9,10 @@ type ListInput = {
   data: string;
   setEditId: reactSetState<string | null>;
 };
+
 const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
   const [newTask, setNewTask] = useState<string>(data);
+  const input = useRef<null | any>(null);
   const handleEdit = (e?: React.FormEvent) => {
     e?.preventDefault();
     let updated = set();
@@ -30,13 +33,18 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
     );
     return true;
   };
+  useEffect(() => {
+    input.current.focus();
+  }, []);
 
   return (
     <form onSubmit={handleEdit}>
       <input
         type='text'
+        ref={input}
+        onBlur={handleEdit}
         onChange={(e) => setNewTask(e.target.value)}
-        className='text-gray-200'
+        className='text-gray-200  todoEditInput ring ring-black ring-opacity-0 ring-inset focus:outline-none'
         value={newTask}
       ></input>
     </form>

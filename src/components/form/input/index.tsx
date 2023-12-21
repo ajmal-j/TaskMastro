@@ -13,7 +13,7 @@ export const Input = ({ type, inputValue, setInputValue }: Input) => {
       onChange={(e) => setInputValue(e.target.value)}
       type={type}
       placeholder="Type here..."
-      className='w-full p-3 rounded-lg border border-black mb-2'
+      className='w-full p-3 rounded-lg text-white border border-black bg-gray-700 placeholder:text-white mb-2'
     />
   );
 };
