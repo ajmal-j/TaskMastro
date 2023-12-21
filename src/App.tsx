@@ -8,7 +8,11 @@ import Button from "./components/button";
 import toast, { Toaster } from "react-hot-toast";
 
 function App() {
-  const [items, setItems] = useState<Items[]>([]);
+  const [items, setItems] = useState<Items[]>(() => {
+    const prev = localStorage.getItem("Todo");
+    if (!prev) return [];
+    return JSON.parse(prev);
+  });
   
   const [inputValue, setInputValue] = useState<string>("");
   const handleSubmit = (event: React.FormEvent) => {
@@ -25,7 +29,9 @@ function App() {
     setInputValue("");
   };
 
-
+  useEffect(() => {
+    localStorage.setItem("Todo", JSON.stringify(items));
+  }, [items]);
 
   return (
     <>
