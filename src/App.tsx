@@ -23,7 +23,7 @@ function App() {
     }
     setItems((prev) => [
       ...prev,
-      { data: inputValue, id: Date.now().toString() ,completed:false},
+      { data: inputValue, id: Date.now().toString(), completed: false },
     ]);
     toast.success("Todo added.");
     setInputValue("");
@@ -48,8 +48,12 @@ function App() {
               Add
             </Button>
           </form>
-          <div className='h-[70vh] overflow-y-auto  w-full mt-5'>
-            {!items.length && 'No Todo\'s.'}
+          <div className='h-[70vh] flex flex-col overflow-y-auto  w-full mt-5'>
+            {!items.length ? (
+              "No Todo's."
+            ) : (
+              <span className=' mb-2'>Todo's</span>
+            )}
             <List items={items} setItems={setItems} />
           </div>
         </div>
