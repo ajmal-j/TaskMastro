@@ -36,7 +36,7 @@ const List = ({ items, setItems }: List) => {
   return items.map(({ id, data, completed }) => (
     <div
       key={id}
-      className='mb-2 rounded-lg flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in'
+      className='mb-2 rounded-2xl flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in'
     >
       <div className='flex gap-2'>
         <CheckBox onClick={() => handleCheck(id)} checked={completed} />
@@ -48,16 +48,18 @@ const List = ({ items, setItems }: List) => {
             setItems={setItems}
           />
         ) : (
-          <p className='text-gray-200'>{completed ? <s>{data}</s> : data}</p>
+          <p className='text-gray-200 break-all px-2'>
+            {completed ? <s>{data}</s> : data}
+          </p>
         )}
       </div>
-      <div>
+      <div className='flex gap-2'>
         {editId !== id ? (
           <Button className='text-gray-400' onClick={() => openInput(id)}>
             <i className='fa-solid fa-paintbrush fa-sm'></i>
           </Button>
         ) : (
-          <Button className='text-white ps-2'>
+          <Button className='text-white'>
             <i className='fa-regular fa-circle-check'></i>
           </Button>
         )}
