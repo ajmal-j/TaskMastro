@@ -36,24 +36,31 @@ function App() {
   return (
     <>
       <Header />
-      <div className='flex justify-center items-center'>
-        <div className='flex w-[70vw] flex-col justify-center items-center'>
-          <form className='flex flex-col justify-center items-center' onSubmit={handleSubmit}>
+      <div className='flex justify-center items-center '>
+        <div className='flex w-[70vw] max-w-[1000px] flex-col justify-center items-center'>
+          <form
+            className='flex flex-col justify-center items-center'
+            onSubmit={handleSubmit}
+          >
             <Input
               type='text'
               inputValue={inputValue}
               setInputValue={setInputValue}
             />
-            <Button className='bg-black border border-gray-600  w-[60vw] p-2 text-white rounded-lg'>
+            <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all duration-200'>
               Add
             </Button>
           </form>
           {!items.length ? (
-              <span className='me-auto ms-1 font-bold mt-5  text-white'>No Todo's</span>
-            ) : (
-              <span className='me-auto ms-1 font-bold mt-5  text-white'>Todo's</span>
-            )}
-          <div className='h-[70vh] flex flex-col overflow-y-auto  w-full mt-5'>
+            <span className='me-auto ms-1 font-bold mt-5  text-white'>
+              No Todo's
+            </span>
+          ) : (
+            <span className='me-auto ms-1 font-bold mt-5  text-white'>
+              Todo's
+            </span>
+          )}
+          <div className='h-[70vh] max-w-[1000px] flex flex-col overflow-y-auto  w-full mt-5'>
             <List items={items} setItems={setItems} />
           </div>
         </div>

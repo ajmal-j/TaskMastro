@@ -38,7 +38,7 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
   }, []);
 
   return (
-    <form onSubmit={handleEdit}>
+    <form className="w-full ms-2" onSubmit={handleEdit}>
       <input
         type='text'
         ref={input}

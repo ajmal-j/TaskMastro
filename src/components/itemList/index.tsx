@@ -36,7 +36,7 @@ const List = ({ items, setItems }: List) => {
   return items.map(({ id, data, completed }) => (
     <div
       key={id}
-      className='mb-2 rounded-2xl flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in'
+      className='mb-2 bg-opacity-60 rounded-2xl flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in hover:bg-opacity-30 hover:border-neutral-300 transition-all duration-300 hover:shadow-2xl'
     >
       <div className='flex gap-2'>
         <CheckBox onClick={() => handleCheck(id)} checked={completed} />
@@ -49,7 +49,7 @@ const List = ({ items, setItems }: List) => {
           />
         ) : (
           <p className='text-gray-200 break-all px-2'>
-            {completed ? <s>{data}</s> : data}
+            {completed ? <s className='text-gray-500'>{data}</s> : data}
           </p>
         )}
       </div>

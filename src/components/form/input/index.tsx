@@ -13,7 +13,7 @@ export const Input = ({ type, inputValue, setInputValue }: Input) => {
       onChange={(e) => setInputValue(e.target.value)}
       type={type}
       placeholder='Type here...'
-      className='w-[60vw] py-5 px-3 rounded-lg text-black border border-black bg-gray-200 placeholder:text-black mb-2'
+      className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-black border border-black focus:outline-slate-200 bg-gray-200 placeholder:text-black mb-2'
     />
   );
 };
