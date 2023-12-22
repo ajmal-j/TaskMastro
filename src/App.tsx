@@ -13,12 +13,16 @@ function App() {
         toastOptions={{
           success: {
             style: {
-              borderRadius: "1rem",
+              borderRadius: "10px",
+              background: "#8732ff",
+              color: "#fff",
             },
           },
           error: {
             style: {
-              borderRadius: "1rem",
+              borderRadius: "10px",
+              background: "#8732ff",
+              color: "#fff",
             },
           },
         }}

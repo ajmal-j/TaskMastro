@@ -30,6 +30,7 @@ const Home = () => {
         edited: false,
       },
     ]);
+    setSort("ascending");
     toast.success("Todo added.");
     setInputValue("");
   };
