@@ -28,7 +28,9 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
     }
     setItems((prev) =>
       prev.map((current) =>
-        current.id === id ? { ...current, data: newTask } : current
+        current.id === id
+          ? { ...current, data: newTask, edited: true }
+          : current
       )
     );
     return true;
@@ -38,13 +40,13 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
   }, []);
 
   return (
-    <form className="w-full ms-2" onSubmit={handleEdit}>
+    <form className='w-full ms-2' onSubmit={handleEdit}>
       <input
         type='text'
         ref={input}
         onBlur={handleEdit}
         onChange={(e) => setNewTask(e.target.value)}
-        className='text-gray-200  todoEditInput ring ring-black ring-opacity-0 ring-inset focus:outline-none'
+        className='text-gray-200 w-full todoEditInput ring ring-black ring-opacity-0 ring-inset focus:outline-none'
         value={newTask}
       ></input>
     </form>

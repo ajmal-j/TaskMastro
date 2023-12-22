@@ -5,4 +5,5 @@ export type Items = {
   id: string;
   completed: boolean;
   createdAt:string;
+  edited:boolean;
 };

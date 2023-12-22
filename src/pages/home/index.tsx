@@ -4,7 +4,6 @@ import { Input } from "../../components/form/input";
 import List from "../../components/itemList";
 import { Items } from "../../types/utils";
 import toast from "react-hot-toast";
-import moment from "moment";
 
 const Home = () => {
   const [items, setItems] = useState<Items[]>(() => {
@@ -27,6 +26,7 @@ const Home = () => {
         id: Date.now().toString(),
         completed: false,
         createdAt: new Date().toISOString(),
+        edited: false,
       },
     ]);
     toast.success("Todo added.");
