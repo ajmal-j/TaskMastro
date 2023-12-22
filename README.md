@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the React Vite Todo App! This application is built with React, Vite, TypeScript, and Tailwind CSS, providing a fast and efficient development experience with a sleek user interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add**: Easily add new tasks to your to-do list.
+- **Edit**: Update task details seamlessly.
+- **Delete**: Remove tasks you no longer need.
+- **Check**: Mark tasks as completed or pending.
+- **Sorting**: Sort your to-do list in ascending or descending order based on task names, completion status, or creation time.
+- **Clear Completed**: Quickly remove all completed tasks with a single click.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Make sure you have Node.js and npm installed on your machine.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone this repository:
+
+   ```
+   git clone https://github.com/ajmal-j/toDoApp.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd toDoApp
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+
+# Running the App
+
+- Start the development server:
+  ```
+  npm run dev
+  ```
+
+### Visit http://localhost:5173/ in your browser to use the Todo App.
+
+# Technologies Used
+
+- React
+- Vite
+- TypeScript
+- Tailwind CSS

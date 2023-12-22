@@ -4,15 +4,15 @@ import "./index.css";
 
 type RemoveButton = {
   setItems: reactSetState<Items[]>;
-  open():void;
+  open(): void;
 };
-export const RemoveButton = ({ setItems,open }: RemoveButton) => {
+export const RemoveButton = ({ setItems, open }: RemoveButton) => {
   const handleClick = () => {
     setItems((prev) => prev.filter((val) => val.completed !== true));
-    toast.success("Cleared completed todo's",{
-      id:"clear"
+    toast.success("Cleared completed todo's", {
+      id: "clear",
     });
-    open()
+    open();
   };
   return (
     <div className='flex justify-center'>

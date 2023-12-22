@@ -11,9 +11,9 @@
     opacity: 1;
   }
 }
-.beforeAndAfter::before{
-  content: '(';
+.beforeAndAfter::before {
+  content: "(";
 }
-.beforeAndAfter::after{
-  content: ')';
+.beforeAndAfter::after {
+  content: ")";
 }
