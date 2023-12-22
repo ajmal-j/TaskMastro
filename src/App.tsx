@@ -2,12 +2,14 @@ import Header from "./components/header/header";
 import { Toaster } from "react-hot-toast";
 import Home from "./pages/home";
 import "./App.css";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (
     <>
       <Header />
       <Home />
+      <Footer/>
       <Toaster
         position='top-right'
         toastOptions={{
