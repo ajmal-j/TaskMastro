@@ -2,7 +2,7 @@ import "./header.css";
 
 import { useEffect, useState } from "react";
 
-export const Header = () => {
+const Header = () => {
   const [time, setTime] = useState<Date>(new Date());
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -32,3 +32,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;
