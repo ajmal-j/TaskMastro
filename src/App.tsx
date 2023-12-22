@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { Header } from "./components/header/header";
 import { Input } from "./components/form/input";
 import { Items } from "./types/utils";
 import List from "./components/itemList";
 import Button from "./components/button";
 import toast, { Toaster } from "react-hot-toast";
+import "./App.css";
 
 function App() {
   const [items, setItems] = useState<Items[]>(() => {
@@ -47,7 +47,7 @@ function App() {
               inputValue={inputValue}
               setInputValue={setInputValue}
             />
-            <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all shadow-gray-500 shadow-md ease-in duration-300'>
+            <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all hover:shadow-gray-500 hover:shadow-md ease-in duration-300'>
               Add
             </Button>
           </form>
@@ -65,7 +65,21 @@ function App() {
           </div>
         </div>
       </div>
-      <Toaster position='top-right' reverseOrder={true} />
+      <Toaster
+        position='top-right'
+        toastOptions={{
+          success: {
+            style: {
+              borderRadius: "1rem",
+            },
+          },
+          error: {
+            style: {
+              borderRadius: "1rem",
+            },
+          },
+        }}
+      />
     </>
   );
 }

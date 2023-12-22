@@ -17,6 +17,9 @@ const List = ({ items, setItems }: List) => {
     toast("Deleted!", {
       icon: "🧹",
       duration: 900,
+      style: {
+        borderRadius: "1rem",
+      },
     });
   };
   const handleCheck = (currentId: string) => {
