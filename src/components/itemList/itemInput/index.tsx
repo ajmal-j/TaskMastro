@@ -22,6 +22,10 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
     }
   };
   const set = () => {
+    if (data === newTask) {
+      setEditId(null);
+      return false;
+    }
     if (!newTask) {
       toast.error("Enter Something", { duration: 700 });
       return false;

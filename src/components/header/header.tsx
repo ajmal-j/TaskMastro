@@ -10,24 +10,27 @@ const Header = () => {
     }, 6000);
     return () => clearInterval(intervalId);
   }, []);
-  let hours: string | number = time.getHours();
-  let Am: boolean = true;
-  if (hours > 12) {
-    hours -= 12;
+  let hours: number = time.getHours();
+  let am: boolean = true;
+
+  if (hours >= 12) {
+    am = false;
+    if (hours > 12) {
+      hours -= 12;
+    }
   }
-  if (hours >= 12) Am = false;
-  if (hours < 9) {
-    hours = "0" + " " + hours;
-  }
-  const minutes = time.getMinutes();
+
+  let formattedHours: string = hours < 10 ? "0" + hours : "" + hours;
+
+  let formattedTime: string = formattedHours + (am ? " am" : " pm");
+
   return (
     <div className='flex items-center p-2 pt-4 mb-5 '>
       <img className='w-[55px]' src='/logo.svg' alt='logo' />
       <span className='text-xl font-thin text-white'>To Do App</span>
       <p className='timeDiv'>
-        <span className='hour'>{hours}</span>
-        <span className='minutes'>{minutes}</span>
-        <span>{Am ? " am" : " pm"}</span>
+        <span className='hour'>{formattedHours}</span>
+        <span className='minutes'>{formattedTime}</span>
       </p>
     </div>
   );
