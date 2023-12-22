@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Sort, reactSetState } from "../../../types/utils";
+import { Items, Sort, reactSetState } from "../../../types/utils";
 import Button from "..";
 import { v4 as uuid } from "uuid";
+import { RemoveButton } from "../removeButton";
 
 type DropDown = {
   sort: Sort;
   setSort: reactSetState<Sort>;
+  setItems: reactSetState<Items[]>;
 };
 
-const DropDown = ({ sort, setSort }: DropDown) => {
+const DropDown = ({ sort, setSort, setItems }: DropDown) => {
   const [isOpen, setIsOpen] = useState(false);
   const open = () => {
     setIsOpen(!isOpen);
@@ -70,6 +72,7 @@ const DropDown = ({ sort, setSort }: DropDown) => {
                 </Button>
               </li>
             ))}
+            <RemoveButton open={open} setItems={setItems} />
           </ul>
         </div>
       )}

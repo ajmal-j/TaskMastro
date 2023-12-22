@@ -49,7 +49,7 @@ const Home = () => {
             inputValue={inputValue}
             setInputValue={setInputValue}
           />
-          <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all hover:shadow-gray-500 hover:shadow-md ease-in duration-300'>
+          <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-md ease-in-out duration-200'>
             Add
           </Button>
         </form>
@@ -59,8 +59,10 @@ const Home = () => {
           </span>
         ) : (
           <div className='flex mt-5 w-full items-center justify-between'>
-            <span className='ms-1 font-bold  text-white'><i className="fa-solid fa-list-ul text-gray-200 me-1"></i> Todo's</span>
-            <DropDown setSort={setSort} sort={sort} />
+            <span className='ms-1 font-bold  text-white'>
+              <i className='fa-solid fa-list-ul text-gray-200 me-1'></i> Todo's
+            </span>
+            <DropDown setItems={setItems} setSort={setSort} sort={sort} />
           </div>
         )}
         <div className='h-[70vh] max-w-[1000px] flex flex-col overflow-y-auto  w-full mt-5'>
