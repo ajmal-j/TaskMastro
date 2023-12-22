@@ -14,11 +14,11 @@
   background-color: #aeaeae;
   border-radius: 5px;
 }
-body{
-    height: 100vh;
-    background: url('/bg.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    backdrop-filter: blur(100px);
+body {
+  height: 100vh;
+  background: url("/bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(100px);
 }

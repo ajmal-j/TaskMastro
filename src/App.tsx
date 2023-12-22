@@ -18,7 +18,7 @@ function App() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputValue) {
-      toast.error("Enter Something", { duration: 700 });
+      toast.error("Enter Something", { duration: 700, id: "error" });
       return;
     }
     setItems((prev) => [
@@ -47,7 +47,7 @@ function App() {
               inputValue={inputValue}
               setInputValue={setInputValue}
             />
-            <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all duration-200'>
+            <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all shadow-gray-500 shadow-md ease-in duration-300'>
               Add
             </Button>
           </form>

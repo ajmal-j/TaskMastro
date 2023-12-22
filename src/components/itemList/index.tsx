@@ -36,7 +36,7 @@ const List = ({ items, setItems }: List) => {
   return items.map(({ id, data, completed }) => (
     <div
       key={id}
-      className='mb-2 bg-opacity-60 rounded-2xl flex p-3 justify-between items-center bg-black border border-gray-400 me-1 fade-in hover:bg-opacity-30 hover:border-neutral-300 transition-all duration-300 hover:shadow-2xl'
+      className='mb-2 bg-opacity-60 rounded-2xl flex p-3 justify-between items-center bg-black border border-gray-500 me-2 fade-in hover:bg-opacity-30 hover:border-neutral-300 transition-all duration-300 hover:shadow-2xl'
     >
       <div className='flex gap-2'>
         <CheckBox onClick={() => handleCheck(id)} checked={completed} />

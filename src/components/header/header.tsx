@@ -13,9 +13,9 @@ export const Header = () => {
   let hours: string | number = time.getHours();
   let Am: boolean = true;
   if (hours > 12) {
-    Am = false;
     hours -= 12;
   }
+  if (hours >= 12) Am = false;
   if (hours < 9) {
     hours = "0" + " " + hours;
   }
@@ -27,7 +27,7 @@ export const Header = () => {
       <p className='timeDiv'>
         <span className='hour'>{hours}</span>
         <span className='minutes'>{minutes}</span>
-        <span>{Am?' am':' pm'}</span>
+        <span>{Am ? " am" : " pm"}</span>
       </p>
     </div>
   );
