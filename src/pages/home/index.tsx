@@ -43,10 +43,7 @@ const Home = () => {
   return (
     <div className='flex justify-center items-center '>
       <div className='flex w-[70vw] max-w-[1000px] flex-col justify-center items-center'>
-        <form
-          className='flex items-baseline'
-          onSubmit={handleSubmit}
-        >
+        <form className='flex items-baseline' onSubmit={handleSubmit}>
           <Input
             type='text'
             inputValue={inputValue}
@@ -54,7 +51,11 @@ const Home = () => {
             className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
           <Button className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'>
-            Add
+            {!inputValue.length ? (
+              "Add"
+            ) : (
+              <i className='text-gray-300 fa-solid fa-check'></i>
+            )}
           </Button>
         </form>
         {!items.length ? (
