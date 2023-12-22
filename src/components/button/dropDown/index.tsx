@@ -1,21 +1,30 @@
 import { useState } from "react";
+import { Sort, reactSetState } from "../../../types/utils";
+import Button from "..";
+import { v4 as uuid } from "uuid";
 
-const DropDown = () => {
+type DropDown = {
+  sort: Sort;
+  setSort: reactSetState<Sort>;
+};
+
+const DropDown = ({ sort, setSort }: DropDown) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => {
-    if (isOpen) setIsOpen(!isOpen);
-  };
   const open = () => {
     setIsOpen(!isOpen);
   };
+  const handleSort = (val: Sort) => {
+    setSort(val);
+    if (open) open();
+  };
+  let types: Sort[] = ["ascending", "descending", "completed", "pending"];
   return (
     <div className='relative inline-block'>
       <button
         id='dropdownDefaultButton'
         data-dropdown-toggle='dropdown'
-        className='text-white bg-violet-700 hover:bg-violet-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-violet-700 dark:hover:bg-violet-900 dark:focus:ring-violet-900'
+        className='text-white me-2 bg-violet-700 hover:bg-violet-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-violet-700 dark:hover:bg-violet-500 dark:focus:ring-violet-900'
         type='button'
-        onBlur={toggleDropdown}
         onClick={open}
       >
         <svg
@@ -40,33 +49,27 @@ const DropDown = () => {
       {isOpen && (
         <div
           id='dropdown'
-          className='absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700'
-          style={{ top: "100%", right: 0 }}
+          className='absolute z-10 bg-white divide-y divide-gray-100 rounded-xl shadow w-44 dark:bg-violet-600 border-2 border-violet-900'
+          style={{ top: "115%", right: 0 }}
         >
           <ul
-            className='py-2 text-sm text-gray-700 dark:text-gray-200'
+            className='py-2 text-sm text-gray-700 px-3 dark:text-gray-200'
             aria-labelledby='dropdownDefaultButton'
           >
-            <li>
-              <button className='block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
-                Dashboard
-              </button>
-            </li>
-            <li>
-              <button className='block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
-                Dashboard
-              </button>
-            </li>
-            <li>
-              <button className='block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
-                Dashboard
-              </button>
-            </li>
-            <li>
-              <button className='block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white'>
-                Dashboard
-              </button>
-            </li>
+            {types.map((type) => (
+              <li className='mb-1' key={uuid()}>
+                <Button
+                  onClick={() => handleSort(type)}
+                  className={`${
+                    sort === type && "bg-violet-800 text-white"
+                  } block w-full px-4 py-2 ${
+                    sort !== type && "hover:bg-violet-500"
+                  } capitalize dark:hover:text-white  rounded-xl`}
+                >
+                  {type}
+                </Button>
+              </li>
+            ))}
           </ul>
         </div>
       )}

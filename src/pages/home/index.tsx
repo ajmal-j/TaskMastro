@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../components/button";
 import { Input } from "../../components/form/input";
 import List from "../../components/itemList";
-import { Items } from "../../types/utils";
+import { Items, Sort } from "../../types/utils";
 import toast from "react-hot-toast";
 import DropDown from "../../components/button/dropDown";
 
@@ -12,7 +12,7 @@ const Home = () => {
     if (!prev) return [];
     return JSON.parse(prev);
   });
-
+  const [sort, setSort] = useState<Sort>("ascending");
   const [inputValue, setInputValue] = useState<string>("");
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -59,14 +59,12 @@ const Home = () => {
           </span>
         ) : (
           <div className='flex mt-5 w-full items-center justify-between'>
-            <span className='ms-1 font-bold  text-white'>
-              Todo's
-            </span>
-            <DropDown/>
+            <span className='ms-1 font-bold  text-white'><i className="fa-solid fa-list-ul text-gray-200 me-1"></i> Todo's</span>
+            <DropDown setSort={setSort} sort={sort} />
           </div>
         )}
         <div className='h-[70vh] max-w-[1000px] flex flex-col overflow-y-auto  w-full mt-5'>
-          <List items={items} setItems={setItems} />
+          <List sort={sort} items={items} setItems={setItems} />
         </div>
       </div>
     </div>
