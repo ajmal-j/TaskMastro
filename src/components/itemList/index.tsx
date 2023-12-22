@@ -21,7 +21,9 @@ const List = ({ items, setItems, sort }: List) => {
       icon: "🧹",
       duration: 900,
       style: {
-        borderRadius: "1rem",
+        borderRadius: "10px",
+        background: "#8732ff",
+        color: "#fff",
       },
     });
   };

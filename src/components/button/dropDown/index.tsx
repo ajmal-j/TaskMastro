@@ -24,6 +24,7 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
     <div className='relative inline-block'>
       <button
         id='dropdownDefaultButton'
+        style={{ boxShadow: "0px 0px 15px #7f28d0" }}
         data-dropdown-toggle='dropdown'
         className='text-white me-2 bg-violet-700 hover:bg-violet-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-violet-700 dark:hover:bg-violet-500 dark:focus:ring-violet-900'
         type='button'

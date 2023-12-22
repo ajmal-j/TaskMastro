@@ -31,7 +31,9 @@ const Home = () => {
       },
     ]);
     setSort("ascending");
-    toast.success("Todo added.");
+    toast.success("Todo added.", {
+      id: "added",
+    });
     setInputValue("");
   };
 
@@ -42,15 +44,16 @@ const Home = () => {
     <div className='flex justify-center items-center '>
       <div className='flex w-[70vw] max-w-[1000px] flex-col justify-center items-center'>
         <form
-          className='flex flex-col justify-center items-center'
+          className='flex items-baseline'
           onSubmit={handleSubmit}
         >
           <Input
             type='text'
             inputValue={inputValue}
             setInputValue={setInputValue}
+            className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
-          <Button className='bg-black border border-gray-700  hover:w-10/12 max-w-[900px] w-full p-2 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-md ease-in-out duration-200'>
+          <Button className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'>
             Add
           </Button>
         </form>
@@ -62,6 +65,7 @@ const Home = () => {
           <div className='flex mt-5 w-full items-center justify-between'>
             <span className='ms-1 font-bold  text-white'>
               <i className='fa-solid fa-list-ul text-gray-200 me-1'></i> Todo's
+              ({items.length})
             </span>
             <DropDown setItems={setItems} setSort={setSort} sort={sort} />
           </div>
