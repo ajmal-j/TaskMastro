@@ -36,8 +36,9 @@ const List = ({ items, setItems }: List) => {
   const openInput = (id: string) => {
     setEditId(id);
   };
-
-  return items
+  let todo=items;
+  // todo=;
+  return todo
     .map(({ id, data, completed, createdAt, edited }) => (
       <div
         key={id}
@@ -92,6 +93,6 @@ const List = ({ items, setItems }: List) => {
         </div>
       </div>
     ))
-    .reverse();
+    ;
 };
 export default List;

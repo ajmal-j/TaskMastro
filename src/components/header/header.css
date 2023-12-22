@@ -1,16 +1,16 @@
-.timeDiv{
-    margin-left: auto;
-    margin-right: 10px;
-    color: rgb(236, 236, 236);
-    font-size: larger;
-    text-align: center;
+.timeDiv {
+  margin-left: auto;
+  margin-right: 10px;
+  color: rgb(236, 236, 236);
+  font-size: larger;
+  text-align: center;
 }
-
-.hour{
-    font-size: x-large;
-    font-weight: bolder
+.hour {
+  font-size: x-large;
+  font-weight: bolder;
 }
-.hour::after{
-    content: ':';
-    padding: 5px;
+.hour::after {
+  content: ":";
+  color: rgb(175, 175, 175);
+  padding: 5px;
 }

@@ -29,7 +29,12 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
     setItems((prev) =>
       prev.map((current) =>
         current.id === id
-          ? { ...current, data: newTask, edited: true }
+          ? {
+              ...current,
+              data: newTask,
+              edited: true,
+              createdAt: new Date().toISOString(),
+            }
           : current
       )
     );
