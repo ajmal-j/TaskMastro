@@ -59,10 +59,10 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
   };
 
   return (
-    <div className='left-0 z-20 right-0 bg-white bg-opacity-45 bottom-0 top-0 absolute'>
+    <div className='left-0 z-20 right-0 bg-white bg-opacity-35 bottom-0 top-0 absolute fade-inForm'>
       <div className='relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden py-6 sm:py-12'>
         <div className='relative py-3 sm:w-96 mx-auto text-center'>
-          <div className='mt-4 bg-violet-600 shadow-black shadow-lg rounded-2xl text-left'>
+          <div className='mt-4 bg-violet-600 border border-gray-400 shadow-black shadow-lg rounded-2xl text-left'>
             <form onSubmit={handleSubmit} className='px-8 py-6 text-white'>
               <div className='flex mb-[25px] justify-between'>
                 <h1 className='text-2xl font-bold'>Add Todo's</h1>
