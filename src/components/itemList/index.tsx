@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { Sort, type Items, type reactSetState } from "../../types/utils";
 import Button from "../button";
 import CheckBox from "../checkBox";
-import ListInput from "./itemInput";
+import ListInput from "./itemEditInput";
 import { useState } from "react";
 import moment from "moment";
 import "./index.css";

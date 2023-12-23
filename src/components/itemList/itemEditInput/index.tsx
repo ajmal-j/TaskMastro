@@ -12,7 +12,7 @@ type ListInput = {
 
 const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
   const [newTask, setNewTask] = useState<string>(data);
-  const input = useRef<null | any>(null);
+  const input = useRef<any>(null);
   const handleEdit = (e?: React.FormEvent) => {
     e?.preventDefault();
     let updated = set();
@@ -21,7 +21,7 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
       toast.success("Updated");
     }
   };
-  const set = () => {
+  const set = (): boolean => {
     if (data === newTask) {
       setEditId(null);
       return false;
@@ -53,10 +53,10 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
       <input
         type='text'
         ref={input}
+        value={newTask}
         onBlur={handleEdit}
         onChange={(e) => setNewTask(e.target.value)}
         className='text-gray-200 w-full todoEditInput ring ring-black ring-opacity-0 ring-inset focus:outline-none'
-        value={newTask}
       ></input>
     </form>
   );
