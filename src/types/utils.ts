@@ -6,6 +6,7 @@ export type Items = {
   completed: boolean;
   createdAt: string;
   edited: boolean;
+  dueDate?:string
 };
 
 export type Sort = "ascending" | "descending" | "completed" | "pending";

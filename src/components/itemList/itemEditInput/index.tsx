@@ -7,10 +7,11 @@ type ListInput = {
   id: string;
   setItems: reactSetState<Items[]>;
   data: string;
+  saved: boolean;
   setEditId: reactSetState<string | null>;
 };
 
-const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
+const ListInput = ({ setItems, id, data, setEditId, saved }: ListInput) => {
   const [newTask, setNewTask] = useState<string>(data);
   const input = useRef<any>(null);
   const handleEdit = (e?: React.FormEvent) => {
@@ -21,6 +22,11 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
       toast.success("Updated");
     }
   };
+  useEffect(() => {
+    if (saved) {
+      handleEdit();
+    }
+  }, [saved]);
   const set = (): boolean => {
     if (data === newTask) {
       setEditId(null);
@@ -49,12 +55,13 @@ const ListInput = ({ setItems, id, data, setEditId }: ListInput) => {
   }, []);
 
   return (
-    <form className='w-full ms-2' onSubmit={handleEdit}>
+    <form className='w-full ms-2 me-3' onSubmit={handleEdit}>
       <input
         type='text'
         ref={input}
+        placeholder='enter here..'
         value={newTask}
-        onBlur={handleEdit}
+        onBlur={() => input.current.focus()}
         onChange={(e) => setNewTask(e.target.value)}
         className='text-gray-200 w-full todoEditInput ring ring-black ring-opacity-0 ring-inset focus:outline-none'
       ></input>

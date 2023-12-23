@@ -14,6 +14,7 @@ type List = {
   sort: Sort;
 };
 const List = ({ items, setItems, sort }: List) => {
+  const [save, setSave] = useState<boolean>(false);
   const [editId, setEditId] = useState<null | string>(null);
   const handleDelete = (currentId: string) => {
     setItems((prev) => prev.filter(({ id }) => id !== currentId));
@@ -39,6 +40,7 @@ const List = ({ items, setItems, sort }: List) => {
   };
   const openInput = (id: string) => {
     setEditId(id);
+    setSave(false);
   };
   let todo = items;
   if (sort === "ascending") todo = sorting.ascending(todo);
@@ -47,7 +49,12 @@ const List = ({ items, setItems, sort }: List) => {
   else todo = sorting.pending(todo);
   if (todo.length === 0)
     return <h1 className='text-gray-300 text-center'>empty.</h1>;
-  return todo.map(({ id, data, completed, createdAt, edited }) => (
+  const currentDate = new Date();
+  const formattedDate = currentDate
+    .toISOString()
+    .slice(0, 10)
+    .replace(/-/g, "");
+  return todo.map(({ id, data, completed, createdAt, edited, dueDate }) => (
     <div
       key={id}
       className='mb-2 bg-opacity-60 rounded-2xl p-3  bg-black border border-gray-500 me-2 fade-in hover:bg-opacity-30 hover:border-neutral-300 transition-all duration-300 hover:shadow-2xl '
@@ -57,6 +64,7 @@ const List = ({ items, setItems, sort }: List) => {
           <CheckBox onClick={() => handleCheck(id)} checked={completed} />
           {editId === id ? (
             <ListInput
+              saved={save}
               setEditId={setEditId}
               data={data}
               id={id}
@@ -74,8 +82,8 @@ const List = ({ items, setItems, sort }: List) => {
               <i className='fa-solid fa-paintbrush fa-sm'></i>
             </Button>
           ) : (
-            <Button className='text-white'>
-              <i className='fa-regular fa-circle-check'></i>
+            <Button className='text-white' onClick={() => setSave(true)}>
+              <i className='fa-regular fa-circle-check fa-lg'></i>
             </Button>
           )}
           <Button onClick={() => handleDelete(id)}>
@@ -86,7 +94,23 @@ const List = ({ items, setItems, sort }: List) => {
           </Button>
         </div>
       </div>
-      <div className='m-0 pt-1 flex items-center justify-end'>
+      <div className='m-0 mt-2 pt-1 flex items-center justify-between'>
+        <span className='ps-10 text-slate-300 font-thin text-sm'>
+          {dueDate ? (
+            <>
+              <i
+                className={`${
+                  Number(dueDate.replace(/-/g, "")) < Number(formattedDate)
+                    ? "text-red-600"
+                    : "text-gray-300"
+                } fa-regular fa-calendar-check me-1`}
+              ></i>{" "}
+              {dueDate}
+            </>
+          ) : (
+            " "
+          )}
+        </span>
         <span className='text-slate-300 font-thin text-sm '>
           {moment(createdAt).fromNow()}
           {edited && (

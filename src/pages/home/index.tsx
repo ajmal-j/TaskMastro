@@ -5,6 +5,7 @@ import List from "../../components/itemList";
 import { Items, Sort } from "../../types/utils";
 import toast from "react-hot-toast";
 import DropDown from "../../components/button/dropDown";
+import AddNewForm from "../../components/form/addNewForm";
 
 const Home = () => {
   const [items, setItems] = useState<Items[]>(() => {
@@ -13,6 +14,7 @@ const Home = () => {
     return JSON.parse(prev);
   });
   const [sort, setSort] = useState<Sort>("ascending");
+  const [newForm, setNewForm] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -50,7 +52,13 @@ const Home = () => {
             setInputValue={setInputValue}
             className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
-          <Button className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'>
+          <Button
+            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
+            onClick={
+              !inputValue.length ? () => setNewForm((prev) => !prev) : undefined
+            }
+            type={inputValue.length ? "submit" : "button"}
+          >
             {!inputValue.length ? (
               "Add"
             ) : (
@@ -58,6 +66,13 @@ const Home = () => {
             )}
           </Button>
         </form>
+        {newForm && (
+          <AddNewForm
+            setSort={setSort}
+            setItems={setItems}
+            setNewForm={setNewForm}
+          />
+        )}
         {!items.length ? (
           <span className='me-auto ms-1 font-bold mt-5  text-white'>
             No Todo's
