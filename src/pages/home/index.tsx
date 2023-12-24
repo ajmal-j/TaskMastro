@@ -44,7 +44,7 @@ const Home = () => {
   }, [items]);
   return (
     <div className='flex justify-center items-center '>
-      <div className='flex w-[70vw] max-w-[1000px] flex-col justify-center items-center'>
+      <div className='flex w-full ms-5 me-5 max-w-[1000px] flex-col justify-center items-center'>
         <form className='flex items-baseline' onSubmit={handleSubmit}>
           <Input
             type='text'
@@ -53,7 +53,7 @@ const Home = () => {
             className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
           <Button
-            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white rounded-full transition-all hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
+            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white transition-all rounded-2xl lg:rounded-full xl:rounded-full hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
             onClick={
               !inputValue.length ? () => setNewForm((prev) => !prev) : undefined
             }
@@ -86,7 +86,7 @@ const Home = () => {
             <DropDown setItems={setItems} setSort={setSort} sort={sort} />
           </div>
         )}
-        <div className='h-[70vh] max-w-[1000px] flex flex-col overflow-y-auto  w-full mt-5'>
+        <div className='h-[70vh] max-w-[1000px] flex flex-col overflow-y-auto w-full mt-5'>
           <List sort={sort} items={items} setItems={setItems} />
         </div>
       </div>
