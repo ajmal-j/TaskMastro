@@ -15,8 +15,9 @@
   border-radius: 5px;
 }
 #root {
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
+  backdrop-filter: blur(100px);
 }
 body {
   height: 100%;
@@ -24,5 +25,4 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  backdrop-filter: blur(100px);
 }
