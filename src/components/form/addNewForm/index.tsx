@@ -11,7 +11,7 @@ type AddNewForm = {
 const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [dateInput, setDate] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
     if (inputRef.current) inputRef.current.focus();
   }, []);
@@ -59,7 +59,7 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
   };
 
   return (
-    <div className='left-0 z-20 right-0 bg-white bg-opacity-35 bottom-0 top-0 absolute fade-inForm'>
+    <div className='left-0 z-20 right-0 bg-black bg-opacity-60 bottom-0 top-0 absolute fade-inForm'>
       <div className='relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden py-6 sm:py-12'>
         <div className='relative py-3 sm:w-96 mx-auto text-center'>
           <div className='mt-4 bg-violet-600 border border-gray-400 shadow-black shadow-lg rounded-2xl text-left'>
@@ -75,13 +75,12 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
                 </button>
               </div>
               <label className='block  font-semibold'> Todo </label>
-              <input
-                type='text'
+              <textarea
                 value={inputValue}
                 ref={inputRef}
                 onChange={(e) => setInputValue(() => e.target.value)}
                 placeholder='Todo'
-                className='border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md text-black'
+                className='border min-h-20 w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md text-black'
               />
               <label className='block mt-3 font-semibold'> Due Date </label>
               <input

@@ -1,12 +1,12 @@
-import toast from "react-hot-toast";
-import { Sort, type Items, type reactSetState } from "../../types/utils";
+import "./index.css";
+import moment from "moment";
 import Button from "../button";
 import CheckBox from "../checkBox";
+import toast from "react-hot-toast";
 import ListInput from "./itemEditInput";
-import { useState } from "react";
-import moment from "moment";
-import "./index.css";
+import { memo, useState } from "react";
 import * as sorting from "../../utils/sorting";
+import { Sort, type Items, type reactSetState } from "../../types/utils";
 
 type List = {
   items: Items[];
@@ -126,4 +126,4 @@ const List = ({ items, setItems, sort }: List) => {
     </div>
   ));
 };
-export default List;
+export default memo(List);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Items, Sort, reactSetState } from "../../../types/utils";
 import Button from "..";
 import { v4 as uuid } from "uuid";
@@ -26,7 +26,7 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
         id='dropdownDefaultButton'
         style={{ boxShadow: "0px 0px 15px #7f28d0" }}
         data-dropdown-toggle='dropdown'
-        className='text-white me-2 border border-gray-400 bg-violet-700 hover:bg-violet-900 focus:ring-4 focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-violet-700 dark:hover:bg-violet-500 '
+        className='text-white me-2 border border-gray-400 bg-violet-700 hover:bg-violet-900 focus:ring-4 focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-violet-500 '
         type='button'
         onClick={open}
       >
@@ -81,4 +81,4 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
   );
 };
 
-export default DropDown;
+export default memo(DropDown);
