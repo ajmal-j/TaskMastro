@@ -18,7 +18,8 @@ const Home = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (!inputValue) {
+    if (!inputValue.trim()) {
+      setInputValue('');
       toast.error("Enter Something", { duration: 700, id: "error" });
       return;
     }

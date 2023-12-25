@@ -28,11 +28,12 @@ const ListInput = ({ setItems, id, data, setEditId, saved }: ListInput) => {
     }
   }, [saved]);
   const set = (): boolean => {
-    if (data === newTask) {
+    if (data.trim() === newTask.trim()) {
       setEditId(null);
       return false;
     }
-    if (!newTask) {
+    if (!newTask.trim()) {
+      setNewTask('');
       toast.error("Enter Something", { duration: 700 });
       return false;
     }

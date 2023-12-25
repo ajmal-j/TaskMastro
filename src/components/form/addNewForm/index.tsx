@@ -20,7 +20,8 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue) {
+    if (!inputValue.trim()) {
+      setInputValue("");
       toast.error("Enter Something", { duration: 700, id: "error" });
       return;
     }
@@ -53,8 +54,9 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
     toast.success("Todo added.", {
       id: "added",
     });
-    setInputValue("");
+    cancel();
     setDate("");
+    setInputValue("");
     setSort("ascending");
   };
 
