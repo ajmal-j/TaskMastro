@@ -4,7 +4,7 @@ import Button from "../button";
 import CheckBox from "../checkBox";
 import toast from "react-hot-toast";
 import ListInput from "./itemEditInput";
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import * as sorting from "../../utils/sorting";
 import { Sort, type Items, type reactSetState } from "../../types/utils";
 
@@ -42,11 +42,13 @@ const List = ({ items, setItems, sort }: List) => {
     setEditId(id);
     setSave(false);
   };
-  let todo = items;
-  if (sort === "ascending") todo = sorting.ascending(todo);
-  else if (sort === "completed") todo = sorting.completed(todo);
-  else if (sort === "descending") todo = sorting.descending(todo);
-  else todo = sorting.pending(todo);
+  let todo = structuredClone(items);
+  todo = useMemo(() => {
+    if (sort === "ascending") return sorting.ascending(todo);
+    if (sort === "completed") return sorting.completed(todo);
+    if (sort === "descending") return sorting.descending(todo);
+    return sorting.pending(todo);
+  }, [todo, sort]);
   if (todo.length === 0)
     return <h1 className='text-gray-300 text-center'>empty.</h1>;
   const currentDate = new Date();
