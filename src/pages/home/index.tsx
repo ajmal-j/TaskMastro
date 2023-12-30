@@ -19,7 +19,7 @@ const Home = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputValue.trim()) {
-      setInputValue("");
+      setInputValue('');
       toast.error("Enter Something", { duration: 700, id: "error" });
       return;
     }
