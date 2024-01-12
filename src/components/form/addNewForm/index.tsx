@@ -49,6 +49,7 @@ const AddNewForm = ({ setNewForm, setItems, setSort }: AddNewForm) => {
         completed: false,
         createdAt: new Date().toISOString(),
         edited: false,
+        favorite: false,
       },
     ]);
     toast.success("Todo added.", {
