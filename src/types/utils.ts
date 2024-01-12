@@ -6,7 +6,13 @@ export type Items = {
   completed: boolean;
   createdAt: string;
   edited: boolean;
-  dueDate?:string
+  dueDate?: string;
+  favorite: boolean;
 };
 
-export type Sort = "ascending" | "descending" | "completed" | "pending";
+export type Sort =
+  | "ascending"
+  | "favorite"
+  | "descending"
+  | "completed"
+  | "pending";

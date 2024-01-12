@@ -31,6 +31,7 @@ const Home = () => {
         completed: false,
         createdAt: new Date().toISOString(),
         edited: false,
+        favorite:false
       },
     ]);
     setSort("ascending");
@@ -54,7 +55,7 @@ const Home = () => {
             className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
           <Button
-            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white transition-all rounded-2xl lg:rounded-full xl:rounded-full hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
+            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white transition-all rounded-full hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
             onClick={
               !inputValue.length ? () => setNewForm((prev) => !prev) : undefined
             }

@@ -19,7 +19,13 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
     setSort(val);
     if (open) open();
   };
-  let types: Sort[] = ["ascending", "descending", "completed", "pending"];
+  let types: Sort[] = [
+    "ascending",
+    "descending",
+    "completed",
+    "pending",
+    "favorite",
+  ];
   return (
     <div className='relative inline-block'>
       <button
@@ -69,7 +75,11 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
                     sort !== type && "hover:bg-violet-500"
                   } capitalize dark:hover:text-white  rounded-xl`}
                 >
-                  {type}
+                  {type === "descending"
+                    ? "Oldest to Newest"
+                    : type === "ascending"
+                    ? "Newest to Oldest"
+                    : type}
                 </Button>
               </li>
             ))}

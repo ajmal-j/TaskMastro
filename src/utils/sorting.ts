@@ -14,5 +14,8 @@ const pending = (todo: Items[]) => {
 const completed = (todo: Items[]) => {
   return todo.filter((item) => item.completed === true);
 };
+const favorite = (todo: Items[]) => {
+  return todo.filter((item) => item.favorite === true);
+};
 
-export { ascending, descending, completed, pending };
+export { favorite, ascending, descending, completed, pending };
