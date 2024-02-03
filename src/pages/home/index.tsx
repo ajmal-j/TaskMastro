@@ -19,7 +19,7 @@ const Home = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputValue.trim()) {
-      setInputValue('');
+      setInputValue("");
       toast.error("Enter Something", { duration: 700, id: "error" });
       return;
     }
@@ -31,7 +31,7 @@ const Home = () => {
         completed: false,
         createdAt: new Date().toISOString(),
         edited: false,
-        favorite:false
+        favorite: false,
       },
     ]);
     setSort("ascending");
@@ -50,6 +50,7 @@ const Home = () => {
         <form className='flex items-baseline' onSubmit={handleSubmit}>
           <Input
             type='text'
+            focus={true}
             inputValue={inputValue}
             setInputValue={setInputValue}
             className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
