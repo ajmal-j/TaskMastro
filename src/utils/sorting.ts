@@ -9,13 +9,34 @@ const descending = (todo: Items[]) => {
   return items;
 };
 const pending = (todo: Items[]) => {
-  return todo.filter((item) => item.completed === false);
+  let todoCompleted: Items[] = [];
+  let todoPending: Items[] = [];
+  todo.filter((item) => {
+    item.completed === false
+      ? todoPending.push(item)
+      : todoCompleted.push(item);
+  });
+  return [...todoPending, ...todoCompleted];
 };
 const completed = (todo: Items[]) => {
-  return todo.filter((item) => item.completed === true);
+  let todoCompleted: Items[] = [];
+  let todoPending: Items[] = [];
+  todo.filter((item) => {
+    item.completed === false
+      ? todoPending.push(item)
+      : todoCompleted.push(item);
+  });
+  return [...todoCompleted, ...todoPending];
 };
 const favorite = (todo: Items[]) => {
-  return todo.filter((item) => item.favorite === true);
+  let nonFavoriteTodo: Items[] = [];
+  let favouriteTodo: Items[] = [];
+  todo.filter((item) => {
+    item.favorite === true
+      ? favouriteTodo.push(item)
+      : nonFavoriteTodo.push(item);
+  });
+  return [...favouriteTodo, ...nonFavoriteTodo];
 };
 
 export { favorite, ascending, descending, completed, pending };
