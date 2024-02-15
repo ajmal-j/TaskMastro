@@ -13,6 +13,11 @@ const Home = () => {
     if (!prev) return [];
     return JSON.parse(prev);
   });
+  const [fav, setFav] = useState<boolean>(() => {
+    let fav = localStorage.getItem("fav");
+    if (fav) return JSON.parse(fav);
+    return false;
+  });
   const [sort, setSort] = useState<Sort>("ascending");
   const [newForm, setNewForm] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
@@ -44,6 +49,14 @@ const Home = () => {
   useEffect(() => {
     localStorage.setItem("Todo", JSON.stringify(items));
   }, [items]);
+
+  const makeFav = () => {
+    setFav(!fav);
+    localStorage.setItem("fav", JSON.stringify(!fav));
+  };
+  useEffect(() => {
+    setSort(fav ? "favorite" : 'ascending');
+  }, [fav]);
   return (
     <div className='flex justify-center items-center '>
       <div className='flex w-full ms-5 me-5 max-w-[1000px] flex-col justify-center items-center'>
@@ -86,6 +99,16 @@ const Home = () => {
               <i className='fa-solid fa-list-ul text-gray-200 me-1'></i> Todo's
               ({items.length})
             </span>
+            <div
+              className='ms-auto me-5 cursor-pointer hover:scale-105 transition-all duration-100 ease-in'
+              onClick={makeFav}
+            >
+              {!!fav ? (
+                <i className='fa-solid fa-star text-xl text-yellow-200'></i>
+              ) : (
+                <i className='fa-regular fa-star text-xl text-yellow-200 opacity-90'></i>
+              )}
+            </div>
             <DropDown setItems={setItems} setSort={setSort} sort={sort} />
           </div>
         )}
