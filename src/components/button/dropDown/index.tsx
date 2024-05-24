@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { Items, Sort, reactSetState } from "../../../types/utils";
 import Button from "..";
 import { v4 as uuid } from "uuid";
@@ -19,16 +19,45 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
     setSort(val);
     if (open) open();
   };
-  let types: Sort[] = [
+  const types: Sort[] = [
     "ascending",
     "descending",
     "completed",
     "pending",
     "favorite",
   ];
+
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const closePopover = (e: MouseEvent) => {
+    if (!e.target) return;
+    if (
+      popoverRef.current &&
+      !popoverRef.current?.contains(e.target as Node) &&
+      buttonRef.current &&
+      !buttonRef.current?.contains(e.target as Node)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", closePopover);
+    } else {
+      document.removeEventListener("mousedown", closePopover);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", closePopover);
+    };
+  }, [isOpen]);
+
   return (
     <div className='relative inline-block'>
       <button
+        ref={buttonRef}
         id='dropdownDefaultButton'
         style={{ boxShadow: "0px 0px 15px #7f28d0" }}
         data-dropdown-toggle='dropdown'
@@ -57,6 +86,7 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
 
       {isOpen && (
         <div
+          ref={popoverRef}
           id='dropdown'
           className='absolute z-10 bg-white divide-y divide-gray-100 rounded-xl shadow w-44 dark:bg-violet-600 border-2 border-violet-900'
           style={{ top: "115%", right: 0 }}

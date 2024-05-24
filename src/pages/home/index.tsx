@@ -14,13 +14,14 @@ const Home = () => {
     return JSON.parse(prev);
   });
   const [fav, setFav] = useState<boolean>(() => {
-    let fav = localStorage.getItem("fav");
+    const fav = localStorage.getItem("fav");
     if (fav) return JSON.parse(fav);
     return false;
   });
   const [sort, setSort] = useState<Sort>("ascending");
   const [newForm, setNewForm] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!inputValue.trim()) {
@@ -55,7 +56,7 @@ const Home = () => {
     localStorage.setItem("fav", JSON.stringify(!fav));
   };
   useEffect(() => {
-    setSort(fav ? "favorite" : 'ascending');
+    setSort(fav ? "favorite" : "ascending");
   }, [fav]);
   return (
     <div className='flex justify-center items-center '>
@@ -66,17 +67,20 @@ const Home = () => {
             focus={true}
             inputValue={inputValue}
             setInputValue={setInputValue}
-            className='w-[60vw] mt-5 max-w-[1000px] py-4 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
+            className='w-[60vw] mt-5 max-w-[1000px] sm:py-4 py-2.5 px-5 rounded-full text-white border border-gray-300 focus:outline-slate-900 bg-black placeholder:text-white mb-2'
           />
           <Button
-            className='bg-black ms-2 py-4 border border-gray-300 max-w-[100px] w-full min-w-16 text-white transition-all rounded-full hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
+            className='bg-black ms-2 sm:py-4 py-2.5 border border-gray-300 max-w-[100px] w-full min-w-16 text-white transition-all rounded-full hover:shadow-gray-800 hover:shadow-lg ease-in-out duration-100'
             onClick={
               !inputValue.length ? () => setNewForm((prev) => !prev) : undefined
             }
             type={inputValue.length ? "submit" : "button"}
           >
             {!inputValue.length ? (
-              "Add"
+              <div>
+                <span className='hidden sm:inline-block'>Add</span>
+                <i className='text-gray-300 fa-solid fa-plus sm:hidden'></i>
+              </div>
             ) : (
               <i className='text-gray-300 fa-solid fa-check'></i>
             )}
@@ -103,7 +107,7 @@ const Home = () => {
               className='ms-auto me-5 cursor-pointer hover:scale-105 transition-all duration-100 ease-in'
               onClick={makeFav}
             >
-              {!!fav ? (
+              {fav ? (
                 <i className='fa-solid fa-star text-xl text-yellow-200'></i>
               ) : (
                 <i className='fa-regular fa-star text-xl text-yellow-200 opacity-90'></i>
