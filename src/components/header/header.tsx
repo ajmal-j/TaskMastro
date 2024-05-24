@@ -13,19 +13,19 @@ const Header = () => {
   }, []);
 
   let hours = time.getHours();
-  let minutes = time.getMinutes();
+  const minutes = time.getMinutes();
 
-  let ampm = hours >= 12 ? "pm" : "am";
+  const ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12;
   hours = hours ? hours : 12;
 
-  let strHours = hours < 10 ? "0" + hours : hours.toString();
-  let strMinutes = minutes < 10 ? "0" + minutes : minutes.toString();
+  const strHours = hours < 10 ? "0" + hours : hours.toString();
+  const strMinutes = minutes < 10 ? "0" + minutes : minutes.toString();
 
   return (
     <div className='flex items-center p-2 pt-4 mb-5 '>
       <img className='w-[55px]' src='/logo.svg' alt='logo' />
-      <span className='text-xl font-thin text-white'>To Do App</span>
+      <span className='text-xl font-thin text-white'>Task Mastro</span>
       <p className='timeDiv'>
         <span className='hour'>{strHours}</span>
         <span className='minutes'>{strMinutes}</span>
