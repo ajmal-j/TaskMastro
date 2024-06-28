@@ -109,7 +109,7 @@ const DropDown = ({ sort, setSort, setItems }: DropDown) => {
                     ? "Oldest to Newest"
                     : type === "ascending"
                     ? "Newest to Oldest"
-                    : type}
+                    : type === "favorite" ? "Important" : type}
                 </Button>
               </li>
             ))}
