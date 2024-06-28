@@ -94,8 +94,8 @@ const List = ({ items, setItems, sort }: List) => {
               onClick={() => {
                 makeFavorite(id);
                 favorite
-                  ? toast.error("Removed from favorite")
-                  : toast.success("Added to favorite");
+                  ? toast.error("Removed from important")
+                  : toast.success("Added to important");
               }}
               className='text-white/60'
             >
